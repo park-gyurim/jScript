@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dataType</title>
+</head>
+<body>
+    <script>
+        var length89;
+        var isTrue = false;
+        console.log(typeof isTrue);
+
+        var friend = {
+            firstName: "gildong",
+            lastName: "hong",
+            age: 16,
+            getFullName : function ()
+                { return this.firstName + ":" + this.lastName }
+        }
+        for(field in friend) { // in = 필드를 가져오는것.
+            console.log(field + "," + friend[field]);
+        }
+        console.log(friend.firstName+ "," + friend.lastName);
+        console.log(friend["firstName"] + "," + friend["lastName"]);
+        console.log(friend.getFullName());
+
+        function getName() {
+            return "Leechangho";
+        }
+        function sum(a,b) {
+            return a + b;
+        }
+        
+        console.log(getName());
+        console.log("결과는" + sum(10,20));
+
+        var numAry = [1,2,3,4,5];
+        var strAry = ["hello", "nice", "good"];
+
+        for (var i = 0; i < strAry.length; i++) {
+            console.log(numAry[i])
+        }
+        var friend1 = {
+            firstName: "hanna",
+            lastName: "choi",
+            age: 31,
+        }
+        var friend2 = {
+            firstName: "yuuna",
+            lastName: "go",
+            age: 22,
+        }
+        var friend3 = {
+            firstName: "bora",
+            lastName: "kim",
+            age: 26,
+        }
+        var friends = [friend1,friend2,friend3];
+        for (obj of friends) { // of = 배열에서 가져오는것
+            console.log(obj)
+        }
+
+    </script>
+    
+</body>
+</html>

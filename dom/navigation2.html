@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" name="firstName" id="firstName">
+    <input type="text" name="lastName" id="lastName">
+    <input type="text" name="age" id="age">
+    <button id="btn" onclick="translateBtn()">추가</button>
+
+    <table id="tbl" border="1">
+        <tbody>
+            <tr>
+                <td>FirstName</td>
+                <td>LastName</td>
+                <td>Age</td>
+            </tr>
+        </tbody>
+        <tr>
+            <td style="background-color: aquamarine;">gyurim</td>
+            <td>park</td>
+            <td>22</td>
+        </tr>
+        <tr>
+            <td>yuu</td>
+            <td style="background-color: aquamarine;">ddd</td>
+            <td>46</td>
+        </tr>
+        <tr>
+            <td>dasd</td>
+            <td>axxx</td>
+            <td style="background-color: aquamarine;">44</td>
+        </tr>
+        <tr>
+            <td>asd</td>
+            <td>xxx</td>
+            <td>66</td>
+        </tr>
+    </table>
+    <script> //동적으로 값을 입력받아 테이블을 만드는 자바스크립트
+        var tds = document.querySelectorAll("#tbl tr")
+        console.log(tds);
+
+        tds.forEach(function (a, b) {
+            a.onmouseover = function () {
+                this.style.backGroundColor = "green";
+            }
+            a.onmouseout = function () {
+                this.style.backGroundColor = "";
+            }
+            a.onclick = function() {
+                alert(this.childNodes[1],childNodes[0].nodeValue);
+            }
+        })
+    </script>
+
+</body>
+
+</html>

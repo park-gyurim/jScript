@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="firstName" id="firstName">
+    <input type="text" name="lastName" id="lastName">
+    <input type="text" name="age" id="age">
+    <button id="btn" onclick="addTr()">추가</button>
+    <table id="tbl" border="1">
+        <tr>
+            <td>FirstName</td>
+            <td>LastName</td>
+            <td>Age</td>
+        </tr>
+    </table>
+    <script> //동적으로 값을 입력받아 테이블을 만드는 자바스크립트
+        var tbl = document.getElementById("tbl");
+
+        function addTr() {
+            var fName = document.getElementById('firstName').value;
+            var lName = document.getElementById('lastName').value;
+            var age = document.getElementById('age').value;
+
+            var $tr, $td, $text;
+            $tr = document.createElement("tr"); //tr 태그를 $tr이라는 필드에 입력되게 하는 메소드
+
+            $text = document.createTextNode(fName); //필드에 text 값을 받게하는 메소드
+            $td = document.createElement("td");
+            $td.appendChild($text); //필드(여기선 태그)에 자식필드를 부여하는 메소드
+            $tr.appendChild($td);
+
+            $text = document.createTextNode(lName);
+            $td = document.createElement("td");
+            $td.appendChild($text);
+            $tr.appendChild($td);
+
+            $text = document.createTextNode(age); // 계속 이렇게 필드들을 하나씩 만들어주는 이유는 유저가 입력한 값이 계속 출력되게 하기 위해서
+            $td = document.createElement("td");
+            $td.appendChild($text);
+            $tr.appendChild($td);
+
+            tbl.appendChild($tr);
+
+            document.getElementById('firstName').value=""; //입력 후, 빈 칸의 값을 디폴트로 하게 하기 위한 명령어
+            document.getElementById('lastName').value="";
+            document.getElementById('age').value="";
+        }
+    </script>
+</body>
+</html>

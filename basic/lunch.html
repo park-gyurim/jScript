@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn" onclick="addrList()">펼쳐져라</button>
+    <table id="tbl" border=1 style="width:200px;">
+        <tr>
+            <td>이름</td>
+            <td>폰번</td>
+            <td>나이</td>
+        </tr>
+    </table>
+    <script>
+        var addrList = [
+            { name: "Hong", phone: "1234-1234", age: 20 },
+            { name: "kim", phone: "2323-2424", age: 20 },
+            { name: "jin", phone: "1234-5678", age: 27 },
+            { name: "hwang", phone: "1233-4411", age: 28 },
+        ]
+
+        var $titles = ["name", "phone", "age"];
+        var btn = document.getElementById("btn");
+        btn.onclick = function () {
+            var tbl = document.getElementById("tbl");
+            var $text, $td, $tr;
+            addrList.forEach(function (o) {
+                $tr = document.createElement("tr");//tr 태그만들기 ex: <tr></tr>
+                for (field of $titles) {
+                    $text = document.createTextNode(o[field]);
+                    $td = document.createElement("td");
+                    $td.appendChild($text);
+                    $tr.appendChild($td);
+                }
+                tbl.appendChild($tr);
+            })
+        }
+    </script>
+</body>
+
+</html>

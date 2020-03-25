@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    Eid: <input type="text" placeholder="" name="" id="empId">
+    Name: <input type="text" placeholder="" name="" id="pass">
+    Phone: <input type="text" placeholder="" name="" id="submit">
+
+    <button id=btn onclick="addTr()">Add Info</button>
+
+
+
+
+    <table id=tbl>
+        <tr>
+            <th> empId </th>
+            <th> Name </th>
+            <th> Phone </th>
+            <th> Delete </th>
+        </tr>
+    </table>
+    <script>
+        var datas = [
+            { empId: 101, name: "scott", phone: "1234" },
+            { empId: 102, name: "yuri", phone: "2345" },
+            { empId: 103, name: "adison", phone: "3456" },
+            { empId: 104, name: "curi", phone: "4567" },
+            { empId: 105, name: "masnd", phone: "5678" }
+        ]
+        var tbl = document.getElementById("tbl");
+        var $tr, $td, $text;
+        var $title = ["empId", "name", "phone"];
+        datas.forEach(function (obj, ind) {
+            $tr = document.createElement("tr");
+            $tr.setAttribute("id", obj.empId);
+            $tr.addEventListener("click", clickFnc);
+            $tr.addEventListener("mouseover", mOverFnc);
+            $tr.addEventListener("mouseout", mOutFnc);
+            for (field of $title) {
+                $text = document.createTextNode(obj[field]);
+                $td = document.createElement("td");
+                $td.appendChild($text);//<td>101</td>
+                $tr.appendChild($td);
+
+            }
+            //button 태그생성.
+            $text = document.createTextNode("Del");
+            var $btn = document.createElement("button");
+            $btn.onclick = delFunc;
+            $btn.appendChild($text);
+            $td = document.createElement("td");
+            $td.appendChild($btn);
+            $tr.appendChild($td);
+
+            tbl.appendChild($tr);
+        });
+
+        function delFunc() {
+            console.log(this.parentNode.parentNode);
+            this.parentNode.parentNode.remove();
+
+        }
+        function clickFnc() {
+            console.log(this.childNodes[0].childNodes[0].nodeValue)
+            var artMsg = "id: " + this.childNodes[0].childNodes[0].nodeValue
+                + "\nname: " + this.childNodes[1].childNodes[0].nodeValue
+                + "\nphone" + this.childNodes[2].childNodes[0].nodeValue
+            alert(artMsg);
+        }
+        function mOverFnc() {
+            this.style.background = "yellow";
+        }
+        function mOutFnc() {
+            this.style.background = "";
+        }
+        function addTr() {
+            var fName = document.getElementById('empId').value;
+            var lName = document.getElementById('pass').value;
+            var age = document.getElementById('submit').value;
+
+            var $tr, $td, $text;
+            $tr = document.createElement("tr"); //tr 태그를 $tr이라는 필드에 입력되게 하는 메소드
+
+            $text = document.createTextNode(fName); //필드에 text 값을 받게하는 메소드
+            $td = document.createElement("td");
+            $td.appendChild($text); //필드(여기선 태그)에 자식필드를 부여하는 메소드
+            $tr.appendChild($td);
+
+            $text = document.createTextNode(lName);
+            $td = document.createElement("td");
+            $td.appendChild($text);
+            $tr.appendChild($td);
+
+            $text = document.createTextNode(age); // 계속 이렇게 필드들을 하나씩 만들어주는 이유는 유저가 입력한 값이 계속 출력되게 하기 위해서
+            $td = document.createElement("td");
+            $td.appendChild($text);
+            $tr.appendChild($td);
+
+            $text = document.createTextNode("Del");
+            var $btn = document.createElement("button");
+            $btn.onclick = delFunc;
+            $btn.appendChild($text);
+            $td = document.createElement("td");
+            $td.appendChild($btn);
+            $tr.appendChild($td);
+
+            tbl.appendChild($tr);
+
+
+
+            document.getElementById('empId').value = ""; //입력 후, 빈 칸의 값을 디폴트로 하게 하기 위한 명령어
+            document.getElementById('pass').value = "";
+            document.getElementById('submit').value = "";
+
+            
+
+
+
+        }
+        
+    </script>
+</body>
+
+</html>
